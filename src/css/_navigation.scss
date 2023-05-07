@@ -83,7 +83,16 @@
   font-size: 1em;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 575.98px) {
+
+  /* CSS styles for extra small devices */
+  .site-header nav a {
+    font-size: 0.7em;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* CSS styles for small devices */
   .site-header nav a {
     font-size: 0.7em;
   }
