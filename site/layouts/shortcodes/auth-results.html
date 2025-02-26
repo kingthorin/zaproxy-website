@@ -1,0 +1,66 @@
+<table>
+  <tr>
+    <th>Site</th>
+    <th>URL</th>
+    <th>Type</th>
+    <th>Auth</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Session Mgmt</th>
+    <th>Verification</th>
+    <th>Note</th>
+  </tr>
+  {{ range $key, $site := .Site.Data.scans.auth.output }}
+    {{ range $key2, $plan := $site.plans }}
+    <tr>
+      <td>{{ $key }}</td>
+      <td>{{ $site.site }}</td>
+      <td>{{ $key2 }}</td>
+      {{ if $plan.auth }} 
+        <td><div class="scan-result-pass">&#10003; Passed </div></td>
+      {{ else if not $plan.auth }}
+        <td><div class="scan-result-fail">&#10060; Failed </div></td>
+      {{ else }}
+        <td><div class="scan-result-na">&#10060; N/A </div></td>
+      {{ end }} 
+      {{ if eq $plan.username nil }} 
+        <td><div class="scan-result-na">&mdash; N/A </div></td>
+      {{ else }}
+        {{ if $plan.username }}
+          <td><div class="scan-result-pass">&#10003; Passed </div></td>
+        {{ else }}
+          <td><div class="scan-result-fail">&#10060; Failed </div></td>
+        {{ end }}
+      {{ end }}
+      {{ if eq $plan.password nil }} 
+        <td><div class="scan-result-na">&mdash; N/A </div></td>
+      {{ else }}
+        {{ if $plan.password }}
+          <td><div class="scan-result-pass">&#10003; Passed </div></td>
+        {{ else }}
+          <td><div class="scan-result-fail">&#10060; Failed </div></td>
+        {{ end }}
+      {{ end }}
+      {{ if eq $plan.session nil }} 
+        <td><div class="scan-result-na">&mdash; N/A </div></td>
+      {{ else }}
+        {{ if $plan.session }}
+          <td><div class="scan-result-pass">&#10003; Passed </div></td>
+        {{ else }}
+          <td><div class="scan-result-fail">&#10060; Failed </div></td>
+        {{ end }}
+      {{ end }}
+      {{ if eq $plan.verification nil }} 
+        <td><div class="scan-result-na">&mdash; N/A </div></td>
+      {{ else }}
+        {{ if $plan.verification }}
+          <td><div class="scan-result-pass">&#10003; Passed </div></td>
+        {{ else }}
+          <td><div class="scan-result-fail">&#10060; Failed </div></td>
+        {{ end }}
+      {{ end }}
+      <td>{{ $site.note }}</td>
+    </tr>
+    {{ end }}
+  {{ end }}
+</table>

@@ -1,0 +1,31 @@
+testfire:
+  site: "http://testfire.net"
+  note: "CSA is failing due to use of autodetect."
+  plans:
+    stdbba:
+      auth: true
+      username: true
+      password: true
+      session: true
+      verification: true
+    bbaplus:
+      auth: true
+      username: true
+      password: true
+      session: true
+      verification: true
+    csa:
+      username:
+      password:
+      session: false
+      verification: false
+testphp:
+  site: "http://testphp.vulnweb.com"
+  note: ""
+  plans:
+    stdbba:
+      auth: true
+      username: true
+      password: true
+      session: true
+      verification: true
